@@ -89,7 +89,33 @@ void display(struct stud list[80], int s)
 	printf("\n\n   Average Waiting Time is: = %d",TotalWatingTime/s);
 	printf("\n   Average Turn around Time is: = %d\n\n",TotalTAtime/s);
 }
-
+void scheduling(struct stud list[80], int s)
+{
+    int i, j;
+    struct stud temp;
+    
+    for (i = 0; i < s - 1; i++)
+    {
+        for (j = 0; j < (s - 1-i); j++)
+        {
+            if (list[j].Food_time < list[j + 1].Food_time)
+            {
+                temp = list[j];
+                list[j] = list[j + 1];
+                list[j + 1] = temp;
+            } 
+            else if(list[j].Food_time == list[j + 1].Food_time)
+            {
+            	if(list[j].Sid > list[j + 1].Sid)
+            	{
+            	temp = list[j];
+                list[j] = list[j + 1];
+                list[j + 1] = temp;
+                }
+			}
+        }
+    }
+}
 
 // funtion for calculation of TurnAROUND TIME with no return value
 void turnAroundTime(struct stud list[80], int n)
