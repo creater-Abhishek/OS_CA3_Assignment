@@ -54,3 +54,38 @@ int main()
     }while(c=='1');
     return 0;
 } 
+void accept(struct stud list[80], int s)
+{
+    int i;
+    for (i = 0; i < s; i++)
+    {
+        printf("\n\nEnter data for Student #%d", i + 1);
+        
+        printf("\nEnter Student id : ");
+        scanf("%d", &list[i].Sid);
+
+        printf("Enter time taken for food (minuts): ");
+        scanf("%d", &list[i].Food_time);
+    } 
+}
+
+void display(struct stud list[80], int s)
+{
+    int i,AvgWT=0,AvgTAtime=0;
+	int TotalWatingTime=0,TotalTAtime=0;
+    printf("\n\n\t\t\tLRTF OUTPUT\n");
+  
+    printf("\n|Student id\tFood_time\tWaitingTime\tTurnaroundtime  |");
+    
+    for (i = 0; i < s; i++)
+    {
+        printf("\n|   %d     \t   %d        \t  %d       \t  %d             |", list[i].Sid, list[i].Food_time,list[i].WT,list[i].TAtime);
+        printf("\a\n|---------------------------------------------------------------|");
+		TotalWatingTime= TotalWatingTime+list[i].WT;
+		TotalTAtime= TotalTAtime+list[i].TAtime;
+	} 
+	printf("\n\n   Total Waiting Time is: = %d",TotalWatingTime);
+	printf("\n   Total Turn around Time is: = %d\n\n",TotalTAtime);
+	printf("\n\n   Average Waiting Time is: = %d",TotalWatingTime/s);
+	printf("\n   Average Turn around Time is: = %d\n\n",TotalTAtime/s);
+}
