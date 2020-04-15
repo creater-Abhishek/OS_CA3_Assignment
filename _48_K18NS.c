@@ -89,3 +89,27 @@ void display(struct stud list[80], int s)
 	printf("\n\n   Average Waiting Time is: = %d",TotalWatingTime/s);
 	printf("\n   Average Turn around Time is: = %d\n\n",TotalTAtime/s);
 }
+
+
+// funtion for calculation of TurnAROUND TIME with no return value
+void turnAroundTime(struct stud list[80], int n)
+{
+	int j,total;
+    
+    for(j=0;j<n;j++)
+    {
+        list[j].TAtime=list[j].WT+list[j].Food_time;
+    }
+}
+
+//Funtion for calculation of Waiting time with no return Value
+void waitingTime(struct stud list[80], int n)
+{
+	int j,total;
+    list[0].WT=0;
+    for(j=1;j<n;j++)
+    {
+        list[j].WT=list[j-1].WT+list[j-1].Food_time;
+    }
+}
+
